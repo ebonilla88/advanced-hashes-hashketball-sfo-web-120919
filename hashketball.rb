@@ -1,5 +1,5 @@
 def game_hash
-  $game_hashes = {
+  game_hashes = {
    :home => {
       :team_name => "Brooklyn Nets",
       :colors => ["Black, White"],
