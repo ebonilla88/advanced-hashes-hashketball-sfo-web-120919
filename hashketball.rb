@@ -1,7 +1,8 @@
-$game_hash = {
+def game_hash
+  game_hashes = {
    :home => {
       :team_name => "Brooklyn Nets",
-      :colors => ["Black", "White"],
+      :colors => ["Black, White"],
       :players => [
          {:player_name => "Alan Anderson", :number => 0, :shoe => 16, :points => 22, :rebounds => 12, :assists => 12, :steals => 3, :blocks => 1, :slam_dunks => 1},
          {:player_name => "Reggie Evans", :number => 30, :shoe => 14, :points => 12, :rebounds => 12, :assists => 12, :steals => 12, :blocks => 12, :slam_dunks => 7},
@@ -12,7 +13,7 @@ $game_hash = {
    },
    :away => {
      :team_name => "Charlotte Hornets",
-     :colors => ["Turquoise", "Purple"],
+     :colors => ["Turquoise, Purple"],
      :players => [
         {:player_name => "Jeff Adrien", :number => 4, :shoe => 18, :points => 10, :rebounds => 1, :assists => 1, :steals => 2, :blocks => 7, :slam_dunks => 2},
         {:player_name => "Bismack Biyombo", :number => 0, :shoe => 16, :points => 12, :rebounds => 4, :assists => 7, :steals => 22, :blocks => 15, :slam_dunks => 10},
@@ -22,92 +23,5 @@ $game_hash = {
       ]
    }
   }
-
-def num_points_scored(name)
-  $game_hash.each do |team_key, team_value|
-    team_value[:players].each do |player|
-      if player[:player_name] == name
-        return player[:points]
-      end
-  end
+  return game_hashes
 end
-end
-
- 
-
-def shoe_size(name)
-  $game_hash.each do |team_key, team_value|
-    team_value[:players].each do |player|
-      if player[:player_name] == name
-        return player[:shoe]
-      end
-  end
-end
-end
-
- 
-
-def team_colors(team)
-  $game_hash.each do |team_key, team_value|
-    if team_value[:team_name] == team
-        return team_value[:colors]
-    end
-  end
-end
-
-
-def team_names()
-  arr = []
-  $game_hash.each do |team_key, team_value|
-    arr << team_value[:team_name]
-  end
-  return arr
-end
-
-
-
-def player_numbers(team)
-  arr = []
-  $game_hash.each do |team_key, team_value|
-    team_value[:players].each do |player|
-      if team_value[:team_name] == team
-        arr << player[:number]
-      end
-    end
-  end
-  return arr
-end
-
-
-
-def player_stats(name_of_player)
-  players_hash = Hash.new
-
-  $game_hash.each do |team_key, team_value|
-    team_value[:players].each do |player, v|
-      if player[:player_name] == name_of_player
-        players_hash = {:number => player[:number], :shoe => player[:shoe], :points => player[:points], :rebounds => player[:rebounds], :assists => player[:assists], :steals => player[:steals], :blocks => player[:blocks], :slam_dunks => player[:slam_dunks]  }
-      end
-  end
-end
-return players_hash
-end
-
- 
-
-def big_shoe_rebounds()
-  temp_max_size = 0
-  temp_max_bounds = 0
-
-  $game_hash.each do |team_key, team_value|
-    team_value[:players].each do |player|
-        if player[:shoe] > temp_max_size
-            temp_max_size = player[:shoe]
-              temp_max_bounds = player[:rebounds]
-        end
-    end
-  end
-return temp_max_bounds
-end
-
-
