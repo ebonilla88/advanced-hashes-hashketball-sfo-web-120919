@@ -27,7 +27,7 @@ def game_hash()
 end
 
 def num_points_scored(name)
-  game_hash = game_hash_data()
+  game_hash = game_hash()
   game_hash.each do |team_key, team_value|
     team_value[:players].each do |player|
       if player[:player_name] == name
@@ -38,7 +38,7 @@ end
 end
 
 def shoe_size(name)
-  game_hash = game_hash_data()
+  game_hash = game_hash()
   game_hash.each do |team_key, team_value|
     team_value[:players].each do |player|
       if player[:player_name] == name
@@ -49,7 +49,7 @@ end
 end
 
 def team_colors(team)
-  game_hash = game_hash_data()
+  game_hash = game_hash()
   game_hash.each do |team_key, team_value|
     if team_value[:team_name] == team
         return team_value[:colors]
@@ -59,7 +59,7 @@ end
 
 def team_names()
   arr = []
-  game_hash = game_hash_data()
+  game_hash = game_hash()
   game_hash.each do |team_key, team_value|
     arr << team_value[:team_name]
   end
@@ -68,7 +68,7 @@ end
 
 def player_numbers(team)
   arr = []
-  game_hash = game_hash_data()
+  game_hash = game_hash()
   game_hash.each do |team_key, team_value|
     team_value[:players].each do |player|
       if team_value[:team_name] == team
@@ -81,7 +81,7 @@ end
 
 def player_stats(name_of_player)
   players_hash = Hash.new
-  game_hash = game_hash_data()
+  game_hash = game_hash()
   game_hash.each do |team_key, team_value|
     team_value[:players].each do |player, v|
       if player[:player_name] == name_of_player
@@ -95,7 +95,7 @@ end
 def big_shoe_rebounds()
   temp_max_size = 0
   temp_max_bounds = 0
-  game_hash = game_hash_data()
+  game_hash = game_hash()
   game_hash.each do |team_key, team_value|
     team_value[:players].each do |player|
         if player[:shoe] > temp_max_size
